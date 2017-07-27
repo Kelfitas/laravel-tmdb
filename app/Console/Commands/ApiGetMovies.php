@@ -168,7 +168,14 @@ class ApiGetMovies extends Command
                 continue;
             }
 
+            $movieExists = Movie::where('id', $result['id'])->exists();
+
+            if ($movieExists) {
+                continue;
+            }
+
             $movie = new Movie;
+            $movie->id = $result['id'];
             $movie->original_title = $result['original_title'];
             $movie->save();
 
@@ -177,8 +184,12 @@ class ApiGetMovies extends Command
             }
 
             foreach($result['genre_ids'] as &$genre_id) {
+                if (!$genre_id) {
+                    continue;
+                }
+
                 $movie_genre = new MovieGenre;
-                $movie_genre->movie_id = $movie->id;
+                $movie_genre->movie_id = $result['id'];
                 $movie_genre->genre_id = $genre_id;
                 $movie_genre->save();
             }

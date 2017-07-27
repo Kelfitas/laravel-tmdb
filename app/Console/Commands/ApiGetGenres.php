@@ -90,16 +90,14 @@ class ApiGetGenres extends Command
                 continue;
             }
 
-            $genre = Genre::where('genre_id', $result['id'])
-                ->where('name', $result['name'])
-                ->count();
+            $genreExists = Genre::where('id', $result['id'])->exists();
 
-            if ($genre > 0) {
+            if ($genreExists) {
                 continue;
             }
 
             $genre = new Genre;
-            $genre->genre_id = $result['id'];
+            $genre->id = $result['id'];
             $genre->name = $result['name'];
             $genre->save();
         }

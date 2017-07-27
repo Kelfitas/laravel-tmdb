@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Genre extends Model
 {
     protected $table = 'genres';
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function movies() {
-        return $this->belongsToMany('App\Movie')->using('App\MovieGenre');
+        return $this->belongsToMany('App\Movie', 'movie_genre');
     }
 }

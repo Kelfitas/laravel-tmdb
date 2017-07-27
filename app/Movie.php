@@ -10,6 +10,6 @@ class Movie extends Model
     public $timestamps = true;
 
     public function genres() {
-        return $this->belongsToMany('App\Genre')->using('App\MovieGenre');
+        return $this->belongsToMany('App\Genre', 'movie_genre');
     }
 }
