@@ -124,6 +124,11 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
+    'tmdb_api_key' => env('TMDB_API_KEY'),
+    'tmdb_api_url' => env('TMDB_API_URL', 'https://api.themoviedb.org/3'),
+    'tmdb_api_limit' => (int)env('TMDB_API_LIMIT', 4), // Requests per second
+    'tmdb_api_remaining_header' => env('TMDB_API_REMAINING_HEADER', 'X-RateLimit-Remaining'),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
