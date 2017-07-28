@@ -1,4 +1,5 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+
 # Laravel TMDB
 App that retrieves movies for current day and their genres from TMDB
 
